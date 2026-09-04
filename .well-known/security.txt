@@ -1,4 +1,4 @@
-Contact: mailto:YOUR-SECURITY-EMAIL@example.com
+Contact: mailto:security@spaceghostkilla.com
 Preferred-Languages: en
-Policy: https://YOUR-DOMAIN.example/#disclosure
-Canonical: https://YOUR-DOMAIN.example/.well-known/security.txt
+Policy: https://spaceghostkilla.com/#disclosure
+Canonical: https://spaceghostkilla.com/.well-known/security.txt

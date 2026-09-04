@@ -1,0 +1,11 @@
+{
+  "name": "SpaceGhostikilla // Phantom Protocol",
+  "short_name": "SpaceGhostikilla",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#050208",
+  "theme_color": "#09020f",
+  "icons": [
+    { "src": "assets/favicon.png", "sizes": "256x256", "type": "image/png" }
+  ]
+}

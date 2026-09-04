@@ -1,0 +1,4 @@
+Contact: mailto:YOUR-SECURITY-EMAIL@example.com
+Preferred-Languages: en
+Policy: https://YOUR-DOMAIN.example/#disclosure
+Canonical: https://YOUR-DOMAIN.example/.well-known/security.txt

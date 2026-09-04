@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#09020f" />
+  <meta name="description" content="SpaceGhostikilla — security research, vulnerability intelligence, defensive engineering, and responsible disclosure." />
+  <meta property="og:title" content="SpaceGhostikilla // Phantom Protocol" />
+  <meta property="og:description" content="Security research, vulnerability intelligence, defensive engineering, and responsible disclosure." />
+  <meta property="og:image" content="assets/spaceghostikilla-wallpaper.png" />
+  <title>SpaceGhostikilla // Phantom Protocol</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="starfield" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="SpaceGhostikilla home">
+      <img src="assets/spaceghostikilla-emblem.png" alt="" />
+      <span>SPACEGHOSTIKILLA</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="#intel">INTEL</a>
+      <a href="#vulnerabilities">VULNS</a>
+      <a href="#research">RESEARCH</a>
+      <a href="#terminal">TERMINAL</a>
+      <a href="#disclosure">DISCLOSURE</a>
+    </nav>
+    <div class="status-pill"><span class="status-dot"></span> PHANTOM PROTOCOL // ONLINE</div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-backdrop" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">SECURITY RESEARCH // DEFENSIVE INTELLIGENCE // DIGITAL FIELD NOTES</div>
+          <h1><span class="metal">SPACE</span><span class="ghost">GHOST</span><span class="killa">IKILLA</span></h1>
+          <p class="hero-lede">A personal security research node focused on understanding vulnerabilities, breaking down root causes, and turning offensive knowledge into stronger defenses.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#vulnerabilities">ENTER VULNERABILITY INDEX</a>
+            <a class="btn btn-ghost" href="#terminal">OPEN TERMINAL</a>
+          </div>
+          <div class="hero-meta">
+            <div><span>HOSTNAME</span><strong>SPACEGHOSTIKILLA</strong></div>
+            <div><span>MODE</span><strong>RESEARCH / DEFENSE</strong></div>
+            <div><span>STATUS</span><strong>OPERATIONAL</strong></div>
+          </div>
+        </div>
+
+        <div class="hero-mark reveal delay-1">
+          <div class="orbit orbit-a"></div>
+          <div class="orbit orbit-b"></div>
+          <img src="assets/spaceghostikilla-emblem.png" alt="SpaceGhostikilla hooded cosmic ghost emblem" />
+        </div>
+      </div>
+      <div class="scroll-cue">SCROLL TO DECRYPT ↓</div>
+    </section>
+
+    <section id="intel" class="section section-grid">
+      <div class="section-heading reveal">
+        <div class="section-code">01 // INTELLIGENCE NODE</div>
+        <h2>Know the weakness.<br /><span>Strengthen the system.</span></h2>
+        <p>This site treats vulnerabilities as engineering problems: understand the condition, model the impact, detect the signal, and remove the root cause.</p>
+      </div>
+      <div class="intel-panel reveal delay-1">
+        <div class="panel-header"><span>LIVE RESEARCH POSTURE</span><span class="blink">●</span></div>
+        <div class="metric"><span>PRIMARY FOCUS</span><strong>WEB / CLOUD / IDENTITY</strong></div>
+        <div class="metric"><span>METHODOLOGY</span><strong>ROOT CAUSE → DETECTION → REMEDIATION</strong></div>
+        <div class="metric"><span>DISCLOSURE MODEL</span><strong>RESPONSIBLE / COORDINATED</strong></div>
+        <div class="metric"><span>WEAPONIZATION</span><strong class="safe">DISABLED</strong></div>
+        <div class="scanline"></div>
+      </div>
+    </section>
+
+    <section id="vulnerabilities" class="section">
+      <div class="section-heading centered reveal">
+        <div class="section-code">02 // VULNERABILITY INDEX</div>
+        <h2>Attack surface <span>decoded.</span></h2>
+        <p>Browse common vulnerability classes and the defensive controls that reduce risk.</p>
+      </div>
+
+      <div class="filterbar reveal" role="group" aria-label="Filter vulnerability cards">
+        <button class="filter active" data-filter="all">ALL</button>
+        <button class="filter" data-filter="web">WEB</button>
+        <button class="filter" data-filter="identity">IDENTITY</button>
+        <button class="filter" data-filter="cloud">CLOUD</button>
+        <button class="filter" data-filter="supply">SUPPLY CHAIN</button>
+      </div>
+
+      <div class="vuln-grid">
+        <article class="vuln-card reveal" data-category="web">
+          <div class="card-top"><span class="severity critical">CRITICAL</span><span>SGK-001</span></div>
+          <h3>Injection</h3>
+          <p>Untrusted input is interpreted as commands or queries instead of data, allowing unintended behavior inside an interpreter.</p>
+          <div class="tags"><span>SQL</span><span>COMMAND</span><span>TEMPLATE</span></div>
+          <div class="defense"><b>DEFENSIVE FOCUS</b><br />Parameterized APIs, strict input boundaries, least privilege, and targeted telemetry.</div>
+        </article>
+
+        <article class="vuln-card reveal delay-1" data-category="web identity">
+          <div class="card-top"><span class="severity high">HIGH</span><span>SGK-002</span></div>
+          <h3>Broken Access Control</h3>
+          <p>Authorization decisions fail to enforce who can read, modify, or invoke protected resources.</p>
+          <div class="tags"><span>IDOR</span><span>RBAC</span><span>ABAC</span></div>
+          <div class="defense"><b>DEFENSIVE FOCUS</b><br />Server-side authorization, deny-by-default policies, object-level checks, and access testing.</div>
+        </article>
+
+        <article class="vuln-card reveal delay-2" data-category="web">
+          <div class="card-top"><span class="severity high">HIGH</span><span>SGK-003</span></div>
+          <h3>Cross-Site Scripting</h3>
+          <p>Application-controlled content reaches a browser execution context without the right output encoding or isolation.</p>
+          <div class="tags"><span>XSS</span><span>DOM</span><span>CSP</span></div>
+          <div class="defense"><b>DEFENSIVE FOCUS</b><br />Context-aware encoding, safe templating, CSP, and avoiding dangerous DOM sinks.</div>
+        </article>
+
+        <article class="vuln-card reveal" data-category="cloud web">
+          <div class="card-top"><span class="severity high">HIGH</span><span>SGK-004</span></div>
+          <h3>Server-Side Request Forgery</h3>
+          <p>A server makes outbound requests using attacker-controlled destinations, potentially crossing internal trust boundaries.</p>
+          <div class="tags"><span>SSRF</span><span>METADATA</span><span>EGRESS</span></div>
+          <div class="defense"><b>DEFENSIVE FOCUS</b><br />Destination allowlists, network segmentation, metadata protections, and outbound request controls.</div>
+        </article>
+
+        <article class="vuln-card reveal delay-1" data-category="identity">
+          <div class="card-top"><span class="severity critical">CRITICAL</span><span>SGK-005</span></div>
+          <h3>Authentication Bypass</h3>
+          <p>Identity checks can be skipped, confused, or satisfied with insufficient proof, granting access without valid authentication.</p>
+          <div class="tags"><span>AUTHN</span><span>SESSION</span><span>MFA</span></div>
+          <div class="defense"><b>DEFENSIVE FOCUS</b><br />Centralized auth flows, strong session handling, MFA, negative tests, and invariant enforcement.</div>
+        </article>
+
+        <article class="vuln-card reveal delay-2" data-category="cloud supply">
+          <div class="card-top"><span class="severity high">HIGH</span><span>SGK-006</span></div>
+          <h3>Secrets Exposure</h3>
+          <p>Credentials, tokens, signing keys, or sensitive configuration leak through code, logs, artifacts, or deployment pipelines.</p>
+          <div class="tags"><span>SECRETS</span><span>CI/CD</span><span>KMS</span></div>
+          <div class="defense"><b>DEFENSIVE FOCUS</b><br />Short-lived credentials, secret scanning, rotation, scoped access, and secure storage.</div>
+        </article>
+
+        <article class="vuln-card reveal" data-category="supply">
+          <div class="card-top"><span class="severity high">HIGH</span><span>SGK-007</span></div>
+          <h3>Software Supply Chain Risk</h3>
+          <p>Dependencies, build systems, packages, or release paths are trusted without sufficient verification of origin and integrity.</p>
+          <div class="tags"><span>SBOM</span><span>SCA</span><span>SLSA</span></div>
+          <div class="defense"><b>DEFENSIVE FOCUS</b><br />Pinned dependencies, provenance, signed artifacts, SBOMs, and hardened build pipelines.</div>
+        </article>
+
+        <article class="vuln-card reveal delay-1" data-category="cloud identity">
+          <div class="card-top"><span class="severity medium">MEDIUM</span><span>SGK-008</span></div>
+          <h3>Cloud Misconfiguration</h3>
+          <p>Default or overly broad settings expose services, identities, data, or control planes beyond their intended boundary.</p>
+          <div class="tags"><span>IAM</span><span>STORAGE</span><span>NETWORK</span></div>
+          <div class="defense"><b>DEFENSIVE FOCUS</b><br />Policy-as-code, least privilege, configuration baselines, drift detection, and continuous posture review.</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="research" class="section research-section">
+      <div class="section-heading reveal">
+        <div class="section-code">03 // FIELD NOTES</div>
+        <h2>Research without <span>recklessness.</span></h2>
+        <p>The goal is to explain how vulnerabilities emerge and how defenders can recognize and eliminate them — without publishing weaponized exploit chains.</p>
+      </div>
+      <div class="research-grid">
+        <article class="research-card reveal delay-1">
+          <span>ANATOMY</span>
+          <h3>Root Cause Analysis</h3>
+          <p>Trace a weakness from exposed behavior back to the unsafe assumption, missing boundary, or broken trust decision that created it.</p>
+          <a href="#vulnerabilities">VIEW INDEX →</a>
+        </article>
+        <article class="research-card reveal delay-2">
+          <span>TELEMETRY</span>
+          <h3>Detection Engineering</h3>
+          <p>Translate vulnerability behavior into observable signals across logs, application traces, identity events, and cloud control planes.</p>
+          <a href="#terminal">OPEN NODE →</a>
+        </article>
+        <article class="research-card reveal">
+          <span>HARDENING</span>
+          <h3>Remediation Patterns</h3>
+          <p>Prefer durable engineering controls that remove classes of failure instead of one-off fixes that only address a single payload.</p>
+          <a href="#disclosure">READ POLICY →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="terminal" class="section terminal-section">
+      <div class="section-heading centered reveal">
+        <div class="section-code">04 // OPERATOR TERMINAL</div>
+        <h2>Ghost shell <span>interface.</span></h2>
+        <p>This is a themed navigation console — not a real shell.</p>
+      </div>
+      <div class="terminal reveal">
+        <div class="terminal-bar">
+          <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+          <span class="term-title">spaceghostikilla@phantom-node:~</span>
+        </div>
+        <div id="terminal-output" class="terminal-output" aria-live="polite">
+          <p><span class="prompt">[PHANTOM]</span> secure interface initialized.</p>
+          <p>Type <b>help</b> for available commands.</p>
+        </div>
+        <form id="terminal-form" class="terminal-input-row" autocomplete="off">
+          <label for="terminal-input">user@spaceghostikilla:~$</label>
+          <input id="terminal-input" name="command" spellcheck="false" aria-label="Terminal command" autofocus />
+          <span class="cursor-block" aria-hidden="true"></span>
+        </form>
+      </div>
+    </section>
+
+    <section id="disclosure" class="section disclosure-section">
+      <div class="disclosure-card reveal">
+        <div>
+          <div class="section-code">05 // RESPONSIBLE DISCLOSURE</div>
+          <h2>Find it. Verify it. <span>Report it.</span></h2>
+          <p>Security research should reduce risk, not create it. Research presented here is intended for systems you own, authorized labs, educational environments, and coordinated vulnerability disclosure.</p>
+        </div>
+        <div class="rules">
+          <div><span>01</span><p>Do not access data that is not yours.</p></div>
+          <div><span>02</span><p>Do not disrupt production systems.</p></div>
+          <div><span>03</span><p>Keep testing inside explicit authorization.</p></div>
+          <div><span>04</span><p>Give maintainers enough detail to reproduce and fix the issue safely.</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <img src="assets/spaceghostikilla-emblem.png" alt="" />
+      <div><strong>SPACEGHOSTIKILLA</strong><span>PHANTOM PROTOCOL // SECURITY RESEARCH NODE</span></div>
+    </div>
+    <div class="footer-meta">SYSTEM STATUS: <span>OPERATIONAL</span> // GHOST MODE: <span>ENGAGED</span></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

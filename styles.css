@@ -86,7 +86,7 @@ img { max-width: 100%; }
   background:
     linear-gradient(90deg, rgba(5,2,8,.94) 0%, rgba(5,2,8,.84) 35%, rgba(5,2,8,.34) 65%, rgba(5,2,8,.72) 100%),
     linear-gradient(180deg, rgba(5,2,8,.35), rgba(5,2,8,.82) 86%),
-    url('assets/spaceghostikilla-wallpaper.png') center/cover no-repeat;
+    url('assets/spaceghostkilla-wallpaper.png') center/cover no-repeat;
   opacity: .88;
 }
 .hero::after {

@@ -42,7 +42,7 @@
       print('<span class="prompt">AVAILABLE:</span> help, status, vulns, owasp, research, disclosure, about, clear');
     },
     status() {
-      print('HOSTNAME: <b>SPACEGHOSTIKILLA</b> // PHANTOM PROTOCOL: <b style="color:#5cffb0">ONLINE</b> // MODE: DEFENSIVE RESEARCH');
+      print('HOSTNAME: <b>SPACEGHOSTKILLA</b> // PHANTOM PROTOCOL: <b style="color:#5cffb0">ONLINE</b> // MODE: DEFENSIVE RESEARCH');
     },
     vulns() {
       print('Opening vulnerability index...');
@@ -60,7 +60,7 @@
       document.getElementById('disclosure').scrollIntoView({ behavior: 'smooth' });
     },
     about() {
-      print('SPACEGHOSTIKILLA is a themed personal security research node focused on vulnerability understanding, detection engineering, and remediation.');
+      print('SPACEGHOSTKILLA is a themed personal security research node focused on vulnerability understanding, detection engineering, and remediation.');
     },
     clear() {
       output.innerHTML = '';
@@ -71,7 +71,7 @@
     event.preventDefault();
     const cmd = input.value.trim().toLowerCase();
     if (!cmd) return;
-    print(`<span style="color:#ca33a0">user@spaceghostikilla:~$</span> ${cmd.replace(/[<>]/g, '')}`);
+    print(`<span style="color:#ca33a0">user@spaceghostkilla:~$</span> ${cmd.replace(/[<>]/g, '')}`);
     if (commands[cmd]) commands[cmd]();
     else print(`command not found: <b>${cmd.replace(/[<>]/g, '')}</b> — type <b>help</b>`);
     input.value = '';

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/spaceghostikilla-wallpaper.png" alt="SpaceGhostikilla — Phantom Protocol" width="100%" />
+<img src="assets/spaceghostkilla-wallpaper.png" alt="SpaceGhostkilla — Phantom Protocol" width="100%" />
 
 <img src="assets/favicon.png" width="48" height="48" alt="" /><br />
 
@@ -16,12 +16,12 @@
 
 ## What this is
 
-**SpaceGhostikilla** is a dependency-free static website presented as a personal security research node. It's built around a cosmic hooded-ghost identity and a dark, terminal/synthwave aesthetic — the site itself doubles as a demonstration of clean, framework-free front-end engineering (plain HTML, CSS, and JS, no build tooling required).
+**SpaceGhostkilla** is a dependency-free static website presented as a personal security research node. It's built around a cosmic hooded-ghost identity and a dark, terminal/synthwave aesthetic — the site itself doubles as a demonstration of clean, framework-free front-end engineering (plain HTML, CSS, and JS, no build tooling required).
 
 The content frames vulnerabilities as **engineering problems**: understand the condition, model the impact, detect the signal, remove the root cause — explained defensively, without shipping weaponized exploit chains.
 
 <div align="center">
-<img src="assets/spaceghostikilla-emblem.png" alt="SpaceGhostikilla emblem" width="220" />
+<img src="assets/spaceghostkilla-emblem.png" alt="SpaceGhostkilla emblem" width="220" />
 </div>
 
 ## What it does
@@ -55,8 +55,8 @@ Then visit `http://localhost:8080`.
 ### Or with Docker
 
 ```bash
-docker build -t spaceghostikilla-preview .
-docker run -d --name spaceghostikilla-preview -p 8080:80 spaceghostikilla-preview
+docker build -t spaceghostkilla-preview .
+docker run -d --name spaceghostkilla-preview -p 8080:80 spaceghostkilla-preview
 ```
 
 Then visit `http://localhost:8080`.

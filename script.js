@@ -1,4 +1,17 @@
 (() => {
+  // Hosted checkout URLs (Lemon Squeezy). Public links, not secrets.
+  // A product's button stays disabled ("RELEASING SOON") until its URL is set.
+  const CHECKOUT = {
+    'quick-audit': '',
+    'field-manual': '',
+  };
+  document.querySelectorAll('[data-checkout]').forEach(link => {
+    const url = CHECKOUT[link.dataset.checkout];
+    if (!url) return;
+    link.href = url;
+    link.textContent = link.dataset.label;
+  });
+
   // Scroll-reveal
   const reveal = new IntersectionObserver((entries) => {
     for (const entry of entries) {
@@ -39,7 +52,7 @@
 
   const commands = {
     help() {
-      print('<span class="prompt">AVAILABLE:</span> help, status, vulns, owasp, research, disclosure, about, clear');
+      print('<span class="prompt">AVAILABLE:</span> help, status, vulns, owasp, research, store, audit, disclosure, about, clear');
     },
     status() {
       print('HOSTNAME: <b>SPACEGHOSTKILLA</b> // PHANTOM PROTOCOL: <b style="color:#5cffb0">ONLINE</b> // MODE: DEFENSIVE RESEARCH');
@@ -54,6 +67,14 @@
     research() {
       print('Opening field notes...');
       document.getElementById('research').scrollIntoView({ behavior: 'smooth' });
+    },
+    store() {
+      print('Opening the armory...');
+      document.getElementById('store').scrollIntoView({ behavior: 'smooth' });
+    },
+    audit() {
+      print('Free Cloud Security Quick Audit: 25 checks across identity, logging, storage, network, secrets, CI/CD, and recovery.');
+      document.getElementById('store').scrollIntoView({ behavior: 'smooth' });
     },
     disclosure() {
       print('Opening responsible disclosure policy...');

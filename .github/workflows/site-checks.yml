@@ -1,0 +1,39 @@
+name: Site checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Check JavaScript syntax
+        run: node --check script.js
+      - name: Check links and sitemap
+        run: python3 scripts/check_site.py
+      - name: Stage the exact Pages artifact
+        run: bash scripts/stage_site.sh _site
+      - name: Keep private and development files out of the artifact
+        run: |
+          test -f _site/index.html
+          test -f _site/.well-known/security.txt
+          test ! -e _site/docs
+          test ! -e _site/scripts
+          test ! -e _site/.github
+          test ! -e _site/README.md
+          test ! -e _site/Dockerfile
+          if find _site -type f \( -name '*.md' -o -name '.env*' \) | grep -q .; then
+            echo 'Unexpected private/development file in Pages artifact'
+            exit 1
+          fi

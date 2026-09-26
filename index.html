@@ -47,7 +47,7 @@
           <h1><span class="metal">SPACE</span><span class="ghost">GHOST</span><span class="killa">KILLA</span></h1>
           <p class="hero-lede">Cloud and application security research, checklists, and tools for engineers who defend real systems. Understand how things break, then engineer them so they don't.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#store">GET THE FREE CLOUD AUDIT</a>
+            <a class="btn btn-primary" href="#store" data-ready-when="quick-audit" data-ready-label="GET THE FREE CLOUD AUDIT">PREVIEW THE SECURITY KITS</a>
             <a class="btn btn-ghost" href="#vulnerabilities">ENTER VULNERABILITY INDEX</a>
           </div>
           <div class="hero-meta">
@@ -223,21 +223,23 @@
       </div>
       <div class="research-grid store-grid">
         <article class="research-card product-card reveal delay-1">
-          <span>FREE // CHECKLIST</span>
+          <span>FREE // CHECKLIST // IN PRODUCTION</span>
           <h3>Cloud Security Quick Audit</h3>
-          <p>A 25-check audit of the controls that matter most across identity, logging, storage, network exposure, secrets, CI/CD, and recovery. Takes about an hour. It shows you where to look first.</p>
+          <p>A read-only audit of the controls that matter most across identity, logging, storage, network exposure, secrets, CI/CD, and recovery. Built to take about an hour and show you where to look first.</p>
           <div class="price">FREE</div>
-          <a class="btn btn-ghost checkout" data-checkout="quick-audit" data-label="GET THE FREE AUDIT →">RELEASING SOON</a>
+          <p class="release-state" data-pending="quick-audit">COMING SOON</p>
+          <a class="btn btn-ghost" data-checkout="quick-audit" hidden>GET THE FREE AUDIT →</a>
         </article>
         <article class="research-card product-card reveal delay-2">
-          <span>FIELD MANUAL // PDF</span>
+          <span>FIELD MANUAL // PDF // IN PRODUCTION</span>
           <h3>Cloud Security Field Manual</h3>
-          <p>The working reference behind the audit: commands, AWS, Azure, and Cloudflare examples, Terraform guardrails, IAM patterns, CI/CD controls, and remediation guidance for each finding.</p>
+          <p>Planned as the working reference behind the audit: commands, AWS, Azure, and Cloudflare examples, Terraform guardrails, IAM patterns, CI/CD controls, and remediation guidance for each finding.</p>
           <div class="price">$29</div>
-          <a class="btn btn-primary checkout" data-checkout="field-manual" data-label="GET THE FIELD MANUAL →">RELEASING SOON</a>
+          <p class="release-state" data-pending="field-manual">COMING SOON</p>
+          <a class="btn btn-primary" data-checkout="field-manual" hidden>GET THE FIELD MANUAL →</a>
         </article>
       </div>
-      <p class="store-note">Checkout, tax, and delivery are handled by our payment provider. Your download link arrives by email.</p>
+      <p class="store-note">When these are released, checkout, tax, and delivery will be handled by our payment provider, Lemon Squeezy. See <a href="legal.html">terms, privacy &amp; refunds</a>.</p>
     </section>
 
     <section id="disclosure" class="section disclosure-section">

@@ -168,8 +168,9 @@ img { max-width: 100%; }
 .product-card { display: flex; flex-direction: column; }
 .product-card .price { margin: auto 0 0; padding-top: 18px; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: 2.2rem; color: var(--pink); }
 .research-card a.btn { align-self: flex-start; padding: 13px 17px; }
-.checkout:not([href]) { opacity: .45; cursor: default; pointer-events: none; }
+.release-state { align-self: flex-start; margin: 18px 0 0 !important; padding: 12px 16px; border: 1px dashed var(--line); color: var(--muted) !important; font-size: .7rem !important; letter-spacing: .14em; }
 .store-note { color: var(--muted); font-size: .72rem; letter-spacing: .04em; margin-top: 18px; }
+.store-note a { color: #fff; }
 .research-card a { display: inline-block; margin-top: 18px; color: #fff; text-decoration: none; font-size: .72rem; letter-spacing: .1em; }
 
 .terminal-section { width: min(1100px, calc(100% - 48px)); }

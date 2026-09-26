@@ -3,7 +3,6 @@
   // Set a URL only after that product's file, checkout, and delivery are
   // verified. Until then its card shows "COMING SOON" and no link exists.
   const CHECKOUT = {
-    'quick-audit': '',
     'field-manual': '',
   };
   const isLive = (id) => /^https:\/\//.test(CHECKOUT[id] || '');
@@ -13,9 +12,6 @@
     link.href = CHECKOUT[id];
     link.hidden = false;
     document.querySelector(`[data-pending="${id}"]`)?.remove();
-  });
-  document.querySelectorAll('[data-ready-when]').forEach(el => {
-    if (isLive(el.dataset.readyWhen)) el.textContent = el.dataset.readyLabel;
   });
 
   // Mobile/tablet navigation (the nav collapses at <=1100px in styles.css)

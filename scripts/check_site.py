@@ -19,9 +19,12 @@ class Page(HTMLParser):
         super().__init__()
         self.ids: set[str] = set()
         self.refs: list[tuple[str, str]] = []
+        self.links: list[dict[str, str | None]] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attributes = dict(attrs)
+        if tag == "a":
+            self.links.append(attributes)
         if attributes.get("id"):
             self.ids.add(attributes["id"])
         attribute = {"a": "href", "img": "src", "script": "src", "link": "href"}.get(tag)
@@ -73,6 +76,21 @@ def check() -> list[str]:
                         errors.append(f"{path.name}: {reference!r} has no target id")
             except ValueError as error:
                 errors.append(f"{path.name}: {reference!r}: {error}")
+
+    # A free download must be a visible link to the actual files. A hidden or
+    # missing button can pass a generic link check while still failing visitors.
+    index = pages[ROOT / "index.html"]
+    for name, signature in (
+        ("SpaceGhostKilla-Cloud-Security-Quick-Audit-v1.2.pdf", b"%PDF-"),
+        ("sgk-quick-audit-v1.2.zip", b"PK\x03\x04"),
+    ):
+        href = f"assets/downloads/{name}"
+        links = [link for link in index.links if link.get("href") == href and "hidden" not in link]
+        if not links:
+            errors.append(f"index.html: no visible download link to {href}")
+        file = ROOT / href
+        if file.is_file() and not file.read_bytes().startswith(signature):
+            errors.append(f"{href}: wrong file format")
 
     css = ROOT / "styles.css"
     if css.exists():

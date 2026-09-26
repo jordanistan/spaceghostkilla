@@ -12,6 +12,20 @@
     link.textContent = link.dataset.label;
   });
 
+  // Mobile/tablet navigation (the nav collapses at <=1100px in styles.css)
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  const setNav = (open) => {
+    nav.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.textContent = open ? 'CLOSE' : 'MENU';
+  };
+  navToggle.addEventListener('click', () => setNav(!nav.classList.contains('open')));
+  nav.addEventListener('click', (event) => { if (event.target.closest('a')) setNav(false); });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('open')) { setNav(false); navToggle.focus(); }
+  });
+
   // Scroll-reveal
   const reveal = new IntersectionObserver((entries) => {
     for (const entry of entries) {

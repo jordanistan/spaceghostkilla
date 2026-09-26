@@ -27,6 +27,8 @@ jobs:
       - name: Keep private and development files out of the artifact
         run: |
           test -f _site/index.html
+          cmp assets/downloads/SpaceGhostKilla-Cloud-Security-Quick-Audit-v1.2.pdf _site/assets/downloads/SpaceGhostKilla-Cloud-Security-Quick-Audit-v1.2.pdf
+          cmp assets/downloads/sgk-quick-audit-v1.2.zip _site/assets/downloads/sgk-quick-audit-v1.2.zip
           test -f _site/.well-known/security.txt
           test ! -e _site/docs
           test ! -e _site/scripts

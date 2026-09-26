@@ -70,6 +70,8 @@ img { max-width: 100%; }
 .nav { display: flex; gap: 24px; }
 .nav a { text-decoration: none; color: #c9bbd1; font-size: .72rem; letter-spacing: .14em; transition: .2s ease; }
 .nav a:hover { color: #fff; text-shadow: 0 0 14px var(--pink); }
+.nav-toggle { display: none; font: inherit; font-size: .66rem; letter-spacing: .14em; color: #fff; background: rgba(255,42,168,.08); border: 1px solid var(--line); padding: 9px 12px; cursor: pointer; }
+.nav-toggle:focus-visible, .nav a:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
 .status-pill { justify-self: end; font-size: .64rem; letter-spacing: .1em; color: #d8cadf; border: 1px solid var(--line); padding: 9px 11px; background: rgba(255,42,168,.045); }
 .status-dot { width: 7px; height: 7px; display: inline-block; border-radius: 50%; background: var(--green); box-shadow: 0 0 10px var(--green); margin-right: 6px; }
 
@@ -166,8 +168,9 @@ img { max-width: 100%; }
 .product-card { display: flex; flex-direction: column; }
 .product-card .price { margin: auto 0 0; padding-top: 18px; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; font-size: 2.2rem; color: var(--pink); }
 .research-card a.btn { align-self: flex-start; padding: 13px 17px; }
-.checkout:not([href]) { opacity: .45; cursor: default; pointer-events: none; }
+.release-state { align-self: flex-start; margin: 18px 0 0 !important; padding: 12px 16px; border: 1px dashed var(--line); color: var(--muted) !important; font-size: .7rem !important; letter-spacing: .14em; }
 .store-note { color: var(--muted); font-size: .72rem; letter-spacing: .04em; margin-top: 18px; }
+.store-note a { color: #fff; }
 .research-card a { display: inline-block; margin-top: 18px; color: #fff; text-decoration: none; font-size: .72rem; letter-spacing: .1em; }
 
 .terminal-section { width: min(1100px, calc(100% - 48px)); }
@@ -191,13 +194,17 @@ img { max-width: 100%; }
 .rules span { color: var(--pink); font-weight: 900; }
 .rules p { margin: 0; color: #c2b5c7; line-height: 1.55; font-size: .85rem; }
 
-footer { width: min(1380px, calc(100% - 48px)); margin: 0 auto; min-height: 120px; border-top: 1px solid rgba(255,68,198,.12); display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 0; }
+footer { width: min(1380px, calc(100% - 48px)); margin: 0 auto; min-height: 120px; border-top: 1px solid rgba(255,68,198,.12); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 0; }
 .footer-brand { display: flex; align-items: center; gap: 12px; }
 .footer-brand img { width: 62px; height: 62px; object-fit: contain; }
 .footer-brand strong, .footer-brand span { display: block; }
 .footer-brand strong { letter-spacing: .12em; font-size: .8rem; }
 .footer-brand span, .footer-meta { color: #776a80; font-size: .62rem; letter-spacing: .1em; }
 .footer-meta span { color: var(--pink); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+.footer-links a { color: #c9bbd1; text-decoration: none; font-size: .64rem; letter-spacing: .12em; padding: 6px 0; }
+.footer-links a:hover { color: #fff; }
+.footer-links a:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
 
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -209,8 +216,11 @@ footer { width: min(1380px, calc(100% - 48px)); margin: 0 auto; min-height: 120p
 @keyframes scan { from { top: -2%; } to { top: 102%; } }
 
 @media (max-width: 1100px) {
-  .topbar { grid-template-columns: 1fr auto; }
-  .nav { display: none; }
+  .topbar { grid-template-columns: 1fr auto auto; gap: 12px; }
+  .nav-toggle { display: block; }
+  .nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 20px 16px; background: rgba(5, 2, 8, .97); border-bottom: 1px solid var(--line); }
+  .nav.open { display: flex; }
+  .nav a { padding: 14px 4px; font-size: .8rem; border-bottom: 1px solid rgba(255,68,198,.1); }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-mark { min-height: 360px; order: -1; }
   .hero-mark img { width: min(500px, 88vw); }

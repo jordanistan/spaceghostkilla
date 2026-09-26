@@ -1,15 +1,35 @@
 (() => {
   // Hosted checkout URLs (Lemon Squeezy). Public links, not secrets.
-  // A product's button stays disabled ("RELEASING SOON") until its URL is set.
+  // Set a URL only after that product's file, checkout, and delivery are
+  // verified. Until then its card shows "COMING SOON" and no link exists.
   const CHECKOUT = {
     'quick-audit': '',
     'field-manual': '',
   };
-  document.querySelectorAll('[data-checkout]').forEach(link => {
-    const url = CHECKOUT[link.dataset.checkout];
-    if (!url) return;
-    link.href = url;
-    link.textContent = link.dataset.label;
+  const isLive = (id) => /^https:\/\//.test(CHECKOUT[id] || '');
+  document.querySelectorAll('a[data-checkout]').forEach(link => {
+    const id = link.dataset.checkout;
+    if (!isLive(id)) return;
+    link.href = CHECKOUT[id];
+    link.hidden = false;
+    document.querySelector(`[data-pending="${id}"]`)?.remove();
+  });
+  document.querySelectorAll('[data-ready-when]').forEach(el => {
+    if (isLive(el.dataset.readyWhen)) el.textContent = el.dataset.readyLabel;
+  });
+
+  // Mobile/tablet navigation (the nav collapses at <=1100px in styles.css)
+  const navToggle = document.querySelector('.nav-toggle');
+  const nav = document.getElementById('primary-nav');
+  const setNav = (open) => {
+    nav.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', String(open));
+    navToggle.textContent = open ? 'CLOSE' : 'MENU';
+  };
+  navToggle.addEventListener('click', () => setNav(!nav.classList.contains('open')));
+  nav.addEventListener('click', (event) => { if (event.target.closest('a')) setNav(false); });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('open')) { setNav(false); navToggle.focus(); }
   });
 
   // Scroll-reveal

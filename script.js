@@ -71,9 +71,21 @@
     event.preventDefault();
     const cmd = input.value.trim().toLowerCase();
     if (!cmd) return;
-    print(`<span style="color:#ca33a0">user@spaceghostkilla:~$</span> ${cmd.replace(/[<>]/g, '')}`);
-    if (commands[cmd]) commands[cmd]();
-    else print(`command not found: <b>${cmd.replace(/[<>]/g, '')}</b> — type <b>help</b>`);
+    const echo = document.createElement('p');
+    const who = document.createElement('span');
+    who.style.color = '#ca33a0';
+    who.textContent = 'user@spaceghostkilla:~$ ';
+    echo.append(who, cmd);
+    output.appendChild(echo);
+    if (Object.hasOwn(commands, cmd)) commands[cmd]();
+    else {
+      const miss = document.createElement('p');
+      const b = document.createElement('b');
+      b.textContent = cmd;
+      miss.append('command not found: ', b, ' — type help');
+      output.appendChild(miss);
+      output.scrollTop = output.scrollHeight;
+    }
     input.value = '';
   });
 

@@ -4,11 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#09020f" />
-  <meta name="description" content="SpaceGhostkilla — security research, vulnerability intelligence, defensive engineering, and responsible disclosure." />
+  <meta name="description" content="SpaceGhostkilla — offensive mindset, defensive engineering. Cloud security research, checklists, and tools for engineers who defend real systems." />
   <meta property="og:title" content="SpaceGhostkilla // Phantom Protocol" />
   <meta property="og:description" content="Security research, vulnerability intelligence, defensive engineering, and responsible disclosure." />
-  <meta property="og:image" content="assets/spaceghostkilla-wallpaper.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://spaceghostkilla.com/" />
+  <meta property="og:image" content="https://spaceghostkilla.com/assets/spaceghostkilla-wallpaper.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>SpaceGhostkilla // Phantom Protocol</title>
+  <link rel="canonical" href="https://spaceghostkilla.com/" />
   <link rel="icon" href="assets/favicon.png" type="image/png" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="stylesheet" href="styles.css" />
@@ -27,6 +31,7 @@
       <a href="#vulnerabilities">VULNS</a>
       <a href="#research">RESEARCH</a>
       <a href="#terminal">TERMINAL</a>
+      <a href="#store">STORE</a>
       <a href="#disclosure">DISCLOSURE</a>
     </nav>
     <div class="status-pill"><span class="status-dot"></span> PHANTOM PROTOCOL // ONLINE</div>
@@ -37,12 +42,12 @@
       <div class="hero-backdrop" aria-hidden="true"></div>
       <div class="hero-grid">
         <div class="hero-copy reveal">
-          <div class="eyebrow">SECURITY RESEARCH // DEFENSIVE INTELLIGENCE // DIGITAL FIELD NOTES</div>
+          <div class="eyebrow">OFFENSIVE MINDSET // DEFENSIVE ENGINEERING</div>
           <h1><span class="metal">SPACE</span><span class="ghost">GHOST</span><span class="killa">KILLA</span></h1>
-          <p class="hero-lede">A personal security research node focused on understanding vulnerabilities, breaking down root causes, and turning offensive knowledge into stronger defenses.</p>
+          <p class="hero-lede">Cloud and application security research, checklists, and tools for engineers who defend real systems. Understand how things break, then engineer them so they don't.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#vulnerabilities">ENTER VULNERABILITY INDEX</a>
-            <a class="btn btn-ghost" href="#terminal">OPEN TERMINAL</a>
+            <a class="btn btn-primary" href="#store">GET THE FREE CLOUD AUDIT</a>
+            <a class="btn btn-ghost" href="#vulnerabilities">ENTER VULNERABILITY INDEX</a>
           </div>
           <div class="hero-meta">
             <div><span>HOSTNAME</span><strong>SPACEGHOSTKILLA</strong></div>
@@ -209,10 +214,35 @@
       </div>
     </section>
 
+    <section id="store" class="section store-section">
+      <div class="section-heading reveal">
+        <div class="section-code">05 // ARMORY</div>
+        <h2>Field-tested <span>security kits.</span></h2>
+        <p>Practical checklists and manuals for engineers who secure real cloud environments. Built from the same root-cause, detection, and remediation approach as the research on this node.</p>
+      </div>
+      <div class="research-grid store-grid">
+        <article class="research-card product-card reveal delay-1">
+          <span>FREE // CHECKLIST</span>
+          <h3>Cloud Security Quick Audit</h3>
+          <p>A 25-check audit of the controls that matter most across identity, logging, storage, network exposure, secrets, CI/CD, and recovery. Takes about an hour. It shows you where to look first.</p>
+          <div class="price">FREE</div>
+          <a class="btn btn-ghost checkout" data-checkout="quick-audit" data-label="GET THE FREE AUDIT →">RELEASING SOON</a>
+        </article>
+        <article class="research-card product-card reveal delay-2">
+          <span>FIELD MANUAL // PDF</span>
+          <h3>Cloud Security Field Manual</h3>
+          <p>The working reference behind the audit: commands, AWS, Azure, and Cloudflare examples, Terraform guardrails, IAM patterns, CI/CD controls, and remediation guidance for each finding.</p>
+          <div class="price">$29</div>
+          <a class="btn btn-primary checkout" data-checkout="field-manual" data-label="GET THE FIELD MANUAL →">RELEASING SOON</a>
+        </article>
+      </div>
+      <p class="store-note">Checkout, tax, and delivery are handled by our payment provider. Your download link arrives by email.</p>
+    </section>
+
     <section id="disclosure" class="section disclosure-section">
       <div class="disclosure-card reveal">
         <div>
-          <div class="section-code">05 // RESPONSIBLE DISCLOSURE</div>
+          <div class="section-code">06 // RESPONSIBLE DISCLOSURE</div>
           <h2>Find it. Verify it. <span>Report it.</span></h2>
           <p>Security research should reduce risk, not create it. Research presented here is intended for systems you own, authorized labs, educational environments, and coordinated vulnerability disclosure.</p>
         </div>

@@ -28,6 +28,8 @@ jobs:
             --exclude='.git' \
             --exclude='.github' \
             --exclude='Dockerfile' \
+            --exclude='docs' \
+            --exclude='README.md' \
             --exclude='_site' \
             ./ _site/
 

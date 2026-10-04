@@ -9,7 +9,7 @@ shopt -s nullglob
 for file in *.html *.css *.js *.xml *.txt *.webmanifest CNAME; do
   [[ -f "$file" ]] && cp "$file" "$site_dir/"
 done
-for directory in assets .well-known; do
+for directory in assets service-assets .well-known; do
   if [[ -d "$directory" ]]; then
     cp -R "$directory" "$site_dir/"
   fi

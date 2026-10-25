@@ -1,0 +1,59 @@
+name: Live services and download integrity
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/check_live_review.py'
+      - 'scripts/test_live_review.py'
+      - 'services.html'
+      - 'service-assets/**'
+      - 'assets/downloads/SpaceGhostKilla-Cloud-Security-Quick-Audit-v1.2.pdf'
+      - 'assets/downloads/sgk-quick-audit-v1.2.zip'
+      - '.github/workflows/live-review.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check_live_review.py'
+      - 'scripts/test_live_review.py'
+      - 'services.html'
+      - 'service-assets/**'
+      - 'assets/downloads/SpaceGhostKilla-Cloud-Security-Quick-Audit-v1.2.pdf'
+      - 'assets/downloads/sgk-quick-audit-v1.2.zip'
+      - '.github/workflows/live-review.yml'
+  schedule:
+    - cron: '29 14 * * 4'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-review-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out without persisted credentials
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Run offline verifier tests
+        run: python3 scripts/test_live_review.py
+
+  live:
+    if: (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out trusted main without persisted credentials
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          ref: ${{ github.sha }}
+      - name: Verify live services review and downloads
+        run: python3 scripts/check_live_review.py

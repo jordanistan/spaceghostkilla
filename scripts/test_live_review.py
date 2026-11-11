@@ -262,6 +262,19 @@ class DownloadAndRunTests(unittest.TestCase):
         for path in ("services.html", "service-assets/**", PDF_PATH, ZIP_PATH):
             self.assertGreaterEqual(workflow.count(path), 2)
 
+    def test_read_only_build_workflows_do_not_persist_checkout_credentials(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        for relative_path, expected_timeouts in (
+            (".github/workflows/pages.yml", 2),
+            (".github/workflows/site-checks.yml", 1),
+        ):
+            with self.subTest(workflow=relative_path):
+                workflow = (root / relative_path).read_text()
+                self.assertEqual(workflow.count("uses: actions/checkout@"), 1)
+                self.assertEqual(workflow.count("persist-credentials: false"), 1)
+                self.assertEqual(workflow.count("timeout-minutes: 10"), expected_timeouts)
+                self.assertIn("permissions:\n  contents: read", workflow)
+
 
 if __name__ == "__main__":
     unittest.main()

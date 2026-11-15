@@ -275,6 +275,31 @@ class DownloadAndRunTests(unittest.TestCase):
                 self.assertEqual(workflow.count("timeout-minutes: 10"), expected_timeouts)
                 self.assertIn("permissions:\n  contents: read", workflow)
 
+    def test_codeql_workflow_is_pinned_least_privilege_and_time_bounded(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        workflow = (root / ".github/workflows/codeql.yml").read_text()
+        analyze = workflow.split("\njobs:\n  analyze:\n", 1)[1]
+        codeql_sha = "33d7b85da1a04171e211befe2c739303b9a4c066"
+
+        self.assertIn("permissions:\n  contents: read", workflow)
+        self.assertIn(
+            "permissions:\n      actions: read\n      contents: read\n      security-events: write",
+            analyze,
+        )
+        self.assertNotIn("pull_request_target", workflow)
+        self.assertEqual(analyze.count("timeout-minutes: 15"), 1)
+        self.assertEqual(
+            analyze.count(
+                "uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1"
+            ),
+            1,
+        )
+        self.assertEqual(analyze.count("persist-credentials: false"), 1)
+        self.assertEqual(analyze.count(f"github/codeql-action/init@{codeql_sha}"), 1)
+        self.assertEqual(analyze.count(f"github/codeql-action/analyze@{codeql_sha}"), 1)
+        self.assertIn("languages: javascript-typescript", analyze)
+        self.assertIn("queries: security-extended", analyze)
+
 
 if __name__ == "__main__":
     unittest.main()

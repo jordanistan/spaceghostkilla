@@ -21,6 +21,8 @@ jobs:
           persist-credentials: false
       - name: Check secret-scan workflow policy
         run: python3 -m unittest scripts.test_secret_scan_workflow -v
+      - name: Check Pages workflow policy
+        run: python3 -m unittest scripts.test_pages_workflow -v
       - name: Check JavaScript syntax
         run: |
           node --check script.js

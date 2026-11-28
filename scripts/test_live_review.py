@@ -4,6 +4,7 @@
 from email.message import Message
 import io
 from pathlib import Path
+import re
 import tempfile
 import unittest
 from urllib.request import Request
@@ -279,7 +280,8 @@ class DownloadAndRunTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         workflow = (root / ".github/workflows/codeql.yml").read_text()
         analyze = workflow.split("\njobs:\n  analyze:\n", 1)[1]
-        codeql_sha = "33d7b85da1a04171e211befe2c739303b9a4c066"
+        checkout_sha = "3d3c42e5aac5ba805825da76410c181273ba90b1"
+        codeql_sha = "1bd86f2fdb4b86187fa4059f16f31a3202acc9ea"
 
         self.assertIn("permissions:\n  contents: read", workflow)
         self.assertIn(
@@ -297,6 +299,18 @@ class DownloadAndRunTests(unittest.TestCase):
         self.assertEqual(analyze.count("persist-credentials: false"), 1)
         self.assertEqual(analyze.count(f"github/codeql-action/init@{codeql_sha}"), 1)
         self.assertEqual(analyze.count(f"github/codeql-action/analyze@{codeql_sha}"), 1)
+        uses = re.findall(r"(?m)^\s*-?\s*uses:\s*([^\s#]+)", workflow)
+        self.assertEqual(
+            uses,
+            [
+                f"actions/checkout@{checkout_sha}",
+                f"github/codeql-action/init@{codeql_sha}",
+                f"github/codeql-action/analyze@{codeql_sha}",
+            ],
+        )
+        for action in uses:
+            with self.subTest(action=action):
+                self.assertRegex(action, r"^[^@\s]+@[0-9a-f]{40}$")
         self.assertIn("languages: javascript-typescript", analyze)
         self.assertIn("queries: security-extended", analyze)
 
